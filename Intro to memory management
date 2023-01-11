@@ -58,3 +58,40 @@ Reference Counting
 
 Reference counting works by counting the number of times an object is referenced by other objects in the system. When references to an object are removed, the reference count for an object is decremented. When the reference count becomes zero, the object is deallocated.
 For example, Let’s suppose there are two or more variables that have the same value, so, what Python virtual machine does is, rather than creating another object of the same value in the private heap, it actually makes the second variable point to that originally existing value in the private heap. Therefore, in the case of classes, having a number of references may occupy a large amount of space in the memory, in such a case referencing counting is highly beneficial to preserve the memory to be available for other objects
+
+
+Segmentation in c programming language
+Residential memory of RAM of size 1MB has divided into 16 equal parts. These parts is called segment. Each segment has size is 64 KB. 16 * 64 KB = 1 MB
+
+
+Offset address meaning
+Offset address and segment number in c programming language
+Each segment has divided into two parts.
+1. Segment no (4 bit)
+2. Offset address (16 bit)
+
+
+Data segment in c
+All the segments are used for specific purpose. Like segment number 15 is used for ROM, segment number 14 is used for BIOS etc.
+
+
+Data area:
+All static and extern variable are stored in the data area. It is permanent
+memory space and variable will store in the memory unless and until program
+end.
+
+
+
+3. Heap area:
+This memory area is use to allocate memory dynamically. In c we can allocate
+the memory space dynamically by using function malloc and calloc. It always
+allocates memory in the heap area. Its size is variable and depends upon free
+space in the memory.
+
+
+
+4. Code area:
+Function pointer can only access code area. Size of this area is always fixed
+and it is read only memory area.
+
+
