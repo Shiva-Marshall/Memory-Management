@@ -1,17 +1,60 @@
 memory-mangement_python
 Memory Management consists of memory cells which contain 1 byte of binary information
+
+
+Memory cell in computer
+Entire RAM has divided in numbers of equal parts, which are
+known as memory cells. Following diagram represents the 256
+MB RAM.
+
+
+
+Each cell can store one-byte data.
+Each memory cell has unique address.
+Address is always in whole number and must be in increasing order.
 Memory Management is related to writing memory Efficient Code.
+RAM has divided into two parts:
+(1) Extended memory (useless)
+(2) Residence memory
+
+
+
+Residence memory:
+When any program is executed it is stored in the
+residence memory. For turbo c 3.0, it has 1MB residence
+memory i.e. when we open turbo c 3.0 it stores 1MB in the RAM
+
+
+
+Physical address of computer
+All the c variables are stored in the residence memory.
+In turbo C 3.0, 20 bits address of the memory cell is
+known as physical address or real address. In 20 bits,
+we can represent address from 0x00000 to 0xFFFFF. That
+is all c variables must have memory address within this Range.
+
+
+
 If improper memory management takes place it leads to slowness in application and server components
 t the lowest level, a raw memory allocator ensures that there is enough room in the private heap for storing all Python-related data by interacting with the memory manager of the operating system. On top of the raw memory allocator, several object-specific allocators operate on the same heap and implement distinct memory management policies adapted to the peculiarities of every object type. For example, integer objects are managed differently within the heap than strings, tuples or dictionaries because integers imply different storage requirements and speed/space tradeoffs. The Python memory manager thus delegates some of the work to the object-specific allocators, but ensures that the latter operate within the bounds of the private heap
+
+
+
+
 Allocation Domain--
 ll allocating functions belong to one of three different “domains” (see also PyMemAllocatorDomain). These domains represent different allocation strategies and are optimized for different purposes
 The three allocation domains are:
 
 Raw domain: intended for allocating memory for general-purpose memory buffers where the allocation must go to the system allocator or where the allocator can operate without the GIL. The memory is requested directly to the system.
 
+
+
 “Mem” domain: intended for allocating memory for Python buffers and general-purpose memory buffers where the allocation must be performed with the GIL held. The memory is taken from the Python private heap.
 
 Object domain: intended for allocating memory belonging to Python objects. The memory is taken from the Python private heap.
 Reference Counting
+
+
+
 Reference counting works by counting the number of times an object is referenced by other objects in the system. When references to an object are removed, the reference count for an object is decremented. When the reference count becomes zero, the object is deallocated.
 For example, Let’s suppose there are two or more variables that have the same value, so, what Python virtual machine does is, rather than creating another object of the same value in the private heap, it actually makes the second variable point to that originally existing value in the private heap. Therefore, in the case of classes, having a number of references may occupy a large amount of space in the memory, in such a case referencing counting is highly beneficial to preserve the memory to be available for other objects
